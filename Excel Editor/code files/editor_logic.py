@@ -33,5 +33,15 @@ def edit_sheet(file_name, dir_path, end_path):
 
     #export
     writer = pd.ExcelWriter(end_path + file_name, engine='xlsxwriter')
-    sheet.to_excel(writer, index=False)
+    sheet.to_excel(writer, sheet_name="sheet1", index=False)
+
+    #get the xlsx writer workbook and worksheet objects
+    workbook = writer.book
+    worksheet = writer.sheets["sheet1"]
+
+    #adjust the column widths based on the content
+    for i, col in enumerate(sheet.columns):
+        width = max(sheet[col].apply(lambda x: len(str(x))).max(), len(col))
+        worksheet.set_column(i, i, width)
+        
     writer.close()

@@ -3,10 +3,10 @@ from tqdm import tqdm
 import os
 
 #local dir path (source)
-dir_path = "C:\\Users\\athomas2\\Desktop\\Selenium scripts\\Excel Editor\\"
+dir_path = "C:\\Users\\athomas2\\Desktop\\Selenium scripts\\FMIS Automation and Data Cleaning\\Excel Editor\\"
 
 #local dir path (end)
-end_path = "C:\\Users\\athomas2\\Desktop\\Selenium scripts\\Excel Editor\\Edited Files\\"
+end_path = "C:\\Users\\athomas2\\Desktop\\Selenium scripts\\FMIS Automation and Data Cleaning\\Excel Editor\\Edited Files\\"
 
 # get list of all excel files
 list_excel = []
