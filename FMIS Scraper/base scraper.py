@@ -32,5 +32,6 @@ list_queries = [
     'PL_WO_DESCRIPTIONS'
 ]
 
+
 for x in tqdm(range(len(list_queries))):
     downloader(list_queries[x], user, passw)

@@ -24,12 +24,22 @@ def edit_sheet(file_name, dir_path, end_path):
     now = datetime.now()
     formatted_date = now.strftime("%m/%d/%Y %H:%M:%S %p")
 
-    #add new column with all entries being the datetime
-    sheet.insert(column_count, 'Query-Date', formatted_date)
-
+    #rename file to remove extra numbers in name
     #get index of last '_' in the file_name - this indicates where the number starts
     index = file_name.rindex('_')
     file_name = file_name[:index] + '.xlsx'
+
+     #add new column with all entries being the datetime
+    # for open_po_summary use PO - Query Date
+    # for buyer_backlog use BL - Query Date
+    custom_query_date = ''
+    if file_name == 'PL_OPEN_PO_SUMMARY.xlsx':
+        custom_query_date = 'PO - Query Date'
+    elif file_name == 'PL_BUYER_BACKLOG.xlsx':
+        custom_query_date = 'BL - Query Date'
+    else:
+        custom_query_date = 'Query Date'
+    sheet.insert(column_count, custom_query_date, formatted_date)
 
     #export
     writer = pd.ExcelWriter(end_path + file_name, engine='xlsxwriter')

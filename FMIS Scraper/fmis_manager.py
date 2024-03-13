@@ -43,7 +43,7 @@ def downloader(query_name, user, passw):
     download_button = driver.find_element("name", "QRYRUNEXCEL$0")
     download_button.click()
     #two minute wait for big files
-    time.sleep(120)
+    time.sleep(180)
 
 
     driver.close()

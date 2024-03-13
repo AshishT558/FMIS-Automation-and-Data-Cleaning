@@ -1,12 +1,15 @@
 from editor_logic import edit_sheet
 from tqdm import tqdm
 import os
+from dotenv import load_dotenv
 
+#load environment variables
+load_dotenv()
 #local dir path (source)
-dir_path = "C:\\Users\\athomas2\\Desktop\\Selenium scripts\\FMIS Automation and Data Cleaning\\Excel Editor\\"
+dir_path = os.environ['STARTDIR']
 
 #local dir path (end)
-end_path = "C:\\Users\\athomas2\\Desktop\\Selenium scripts\\FMIS Automation and Data Cleaning\\Excel Editor\\Edited Files\\"
+end_path = os.environ['ENDDIR']
 
 # get list of all excel files
 list_excel = []
@@ -14,6 +17,7 @@ for file in os.listdir(dir_path):
     if file.endswith(".xlsx"):
         list_excel.append(file)
 list_excel
+
 
 #call editor function on each sheet, pass in sheet name, original directory, ending directory
 #displays progress bar 
