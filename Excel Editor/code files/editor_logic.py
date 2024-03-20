@@ -50,8 +50,8 @@ def edit_sheet(file_name, dir_path, end_path):
     worksheet = writer.sheets["sheet1"]
 
     #adjust the column widths based on the content
-    for i, col in enumerate(sheet.columns):
-        width = max(sheet[col].apply(lambda x: len(str(x))).max(), len(col))
-        worksheet.set_column(i, i, width)
+    # for i, col in enumerate(sheet.columns):
+    #     width = max(sheet[col].apply(lambda x: len(str(x))).max(), len(col))
+    #     worksheet.set_column(i, i, width)
         
     writer.close()

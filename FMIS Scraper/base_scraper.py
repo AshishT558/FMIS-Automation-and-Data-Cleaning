@@ -32,6 +32,36 @@ list_queries = [
     'PL_WO_DESCRIPTIONS'
 ]
 
+#extras
+extras = [
+    'SLT_AP024_ENGMAINT',
+    'SLT_CMS_WO_INTERFACE',
+    'SLT_ENG_REQ_TO_PO_MCUN',
+    'SLT_GL_COMBO_OPER_BY_DEPTID_DS',
+    'SLT_RTBS_PEND_VW',
+    'SLT_SRM_DB_RTBS_VW'
+]
 
-for x in tqdm(range(len(list_queries))):
-    downloader(list_queries[x], user, passw)
+#non daily run queries
+new_queries = [
+    'PL_WF_PO_APPR_HISTORY',
+    'PL_WF_PO_APPR_FULL_STEPS_V2',
+    'PL_VOUCHER_PYMTS_PT7',
+    'PL_PURCH_ORDER_DATA_PT4',
+    'PL_PURCH_ORDER_DATA_PT3',
+    'PL_PURCH_ORDER_DATA_PT0b',
+    'PL_PURCH_ORDER_DATA_PT2',
+    'PL_PURCH_ORDER_DATA_PT0a',
+    'PL_CNT_ACTIVITY',
+    'MB_IN_QMAX'
+]
+
+
+
+for x in tqdm(range(len(extras))):
+    downloader(extras[x], user, passw)
+
+
+
+# for x in tqdm(range(len(new_queries))):
+#     downloader(new_queries[x], user, passw)
