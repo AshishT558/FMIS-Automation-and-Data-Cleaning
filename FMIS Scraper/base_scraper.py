@@ -58,10 +58,10 @@ new_queries = [
 
 
 
-for x in tqdm(range(len(extras))):
+for x in tqdm(range(len(list_queries)), desc="Getting Daily Run Files"):
+    downloader(list_queries[x], user, passw)
+
+
+
+for x in tqdm(range(len(extras)), desc="Getting extra files"):
     downloader(extras[x], user, passw)
-
-
-
-# for x in tqdm(range(len(new_queries))):
-#     downloader(new_queries[x], user, passw)
