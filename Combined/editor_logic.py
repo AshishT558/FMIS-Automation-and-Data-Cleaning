@@ -5,8 +5,6 @@ from datetime import datetime, timedelta
 def edit_sheet(file_name, dir_path, end_path):
     sheet = pd.read_excel(dir_path + file_name, header=None)
     sheet.head()
-
-    print('excel read')
     
     #remove the first row
     sheet = sheet.iloc[1:]
@@ -23,10 +21,9 @@ def edit_sheet(file_name, dir_path, end_path):
 
     # get current datetime and
     # format into mm/dd/yyyy hh:mm:ss AM/PM
+    # add  + timedelta(1) for tmrw date
     today = datetime.now()
     formatted_date = today.strftime("%m/%d/%Y %H:%M:%S %p")
-
-    print('Finished editing, renaming now')
 
     #rename file to remove extra numbers in name
     #get index of last '_' in the file_name - this indicates where the number starts

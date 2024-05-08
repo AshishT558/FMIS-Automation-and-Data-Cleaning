@@ -1,12 +1,23 @@
 import time
+import os
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 #function that is called from main
-def downloader(query_name, user, passw):
+def downloader(query_name):
+    #load environment variables
+    load_dotenv()
+
+    #username for FMIS
+    user = os.environ['USER']
+    #password for FMIS
+    passw = os.environ['PASSW']
 
     #start driver
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    driver = webdriver.Chrome(options)
     driver.get('https://fmis.mbta.com/psp/MTFP92/?cmd=start')
 
 
@@ -27,7 +38,7 @@ def downloader(query_name, user, passw):
     searchbar.send_keys('Query')
 
     #click Query Manager, wait 25 seconds before clicking on search result
-    searchResultQM = driver.find_element(By.ID, "PTS_INTELLISRCH_RS$0_row_1")
+    searchResultQM = driver.find_element(By.ID, "PTSTITLE$0")
     driver.implicitly_wait(25)
     searchResultQM.click()
 
@@ -44,6 +55,5 @@ def downloader(query_name, user, passw):
     download_button.click()
     #three minute wait for big files
     time.sleep(180)
-
 
     driver.close()
